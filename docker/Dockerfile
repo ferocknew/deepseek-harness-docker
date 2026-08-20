@@ -54,6 +54,7 @@ RUN mkdir -p ${NVM_DIR} \
 
 # --- uv + python 3.14 ---
 RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=${UV_INSTALL_DIR} sh \
+ && ${UV_INSTALL_DIR}/uv python install ${PYTHON_VERSION} \
  && PY_BIN="$(${UV_INSTALL_DIR}/uv python find ${PYTHON_VERSION})" \
  && ln -sf "${PY_BIN}" /usr/local/bin/python3 \
  && ln -sf "${PY_BIN}" /usr/local/bin/python \
