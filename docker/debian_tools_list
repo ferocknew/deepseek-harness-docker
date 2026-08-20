@@ -19,12 +19,10 @@ netcat-openbsd
 # --- 文本/数据 ---
 jq
 yamllint
-python3-yq
 ripgrep
 sqlite3
 locales
 less
-diff
 patch
 xxd
 dos2unix
