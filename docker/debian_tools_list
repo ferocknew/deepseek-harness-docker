@@ -5,10 +5,11 @@ curl
 wget
 ca-certificates
 git
+git-lfs
 bash
 tini
 sudo
-git-lfs
+openssl
 # --- 远程/网络 ---
 sshpass
 openssh-client
@@ -21,12 +22,25 @@ yamllint
 python3-yq
 ripgrep
 sqlite3
+less
+diff
+patch
+xxd
+dos2unix
+bc
+moreutils
+shellcheck
 # --- 压缩/文件 ---
 unzip
 zip
 p7zip-full
+xz-utils
+bzip2
+zstd
 rsync
 file
+tree
+lsof
 # --- 系统 ---
 procps
 nano
