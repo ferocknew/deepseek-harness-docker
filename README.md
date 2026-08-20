@@ -39,9 +39,9 @@ DeepSeek Harness (`dsh`) 的 Docker 镜像工程。源码以 git submodule 形�
 ## 快速开始
 
 ```bash
-# 打 release tag 后由 GitHub Actions 自动构建并推送 GHCR
-git tag release-0.1.0-rc.8
-git push origin release-0.1.0-rc.8
+# 打任意 tag（版本号由 workflow 自动读取）即可触发构建推送 GHCR
+git tag 0.1.0-rc.8
+git push origin 0.1.0-rc.8
 ```
 
 或在仓库 Actions 页面手动触发 `docker-build` workflow。

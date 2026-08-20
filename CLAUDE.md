@@ -8,7 +8,7 @@ DeepSeek Harness (dsh) 的 Docker 镜像工程。上游源码以 git submodule �
 
 - 镜像版本号与 `origin/deepseek-harness/package.json` 的 `version` 字段对齐，workflow 自动读取。
 - 根目录 `VERSION` 文件同步记录，不带 `v` 前缀。
-- 发版：推送 `release-<version>` tag 触发构建。
+- 发版：推送任意 tag（如 `0.1.0-rc.8`）触发构建。
 
 ## 架构决策（本会话解决的问题）
 

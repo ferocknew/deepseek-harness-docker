@@ -43,7 +43,8 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 # --- nvm + node 24 ---
-RUN curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
+RUN mkdir -p ${NVM_DIR} \
+ && curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
  && . ${NVM_DIR}/nvm.sh \
  && nvm install ${NODE_VERSION} \
  && nvm alias default ${NODE_VERSION} \
