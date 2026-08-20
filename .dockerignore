@@ -1,0 +1,8 @@
+.git
+.gitmodules
+.idea
+.omo
+data
+workspace
+**/.git
+**/.DS_Store

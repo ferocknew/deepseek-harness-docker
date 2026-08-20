@@ -1,0 +1,11 @@
+{
+	admin off
+}
+
+:80 {
+	encode gzip
+	reverse_proxy 127.0.0.1:{env.DSH_WEB_PORT}
+	basic_auth {
+		{env.DSH_AUTH_USERNAME} {env.DSH_AUTH_HASH}
+	}
+}
