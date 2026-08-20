@@ -4,9 +4,12 @@
 FROM node:24-slim AS build
 
 ARG PNPM_VERSION=11.7.0
+# 容器内无 .git 元数据，build 脚本通过该变量获取提交哈希（上游 client-build-environment.ts）
+ARG DSH_CLIENT_COMMIT_HASH=0000000
 ENV NODE_OPTIONS=--max-old-space-size=4096
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+ENV DSH_CLIENT_COMMIT_HASH=${DSH_CLIENT_COMMIT_HASH}
 
 WORKDIR /src
 COPY origin/deepseek-harness/ .
