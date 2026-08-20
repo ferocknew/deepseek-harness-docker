@@ -1,0 +1,32 @@
+# runtime 额外系统工具，每行一个包名，'#' 开头为注释行
+# 修改后重新打 tag 即可在下次构建生效
+# --- 基础 ---
+curl
+wget
+ca-certificates
+git
+bash
+tini
+sudo
+git-lfs
+# --- 远程/网络 ---
+sshpass
+openssh-client
+iputils-ping
+bind9-dnsutils
+netcat-openbsd
+# --- 文本/数据 ---
+jq
+yamllint
+python3-yq
+ripgrep
+sqlite3
+# --- 压缩/文件 ---
+unzip
+zip
+p7zip-full
+rsync
+file
+# --- 系统 ---
+procps
+nano

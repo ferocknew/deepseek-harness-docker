@@ -37,10 +37,12 @@ ENV NODE_VERSION=${NODE_VERSION} \
     DSH_WEB_PORT=3080 \
     PATH=${UV_INSTALL_DIR}:${NVM_DIR}/versions/node/v${NODE_VERSION}/bin:/usr/local/bin:/usr/bin:/bin
 
-# --- base tools ---
+# --- base tools (清单驱动, 见 docker/debian_tools_list) ---
+COPY docker/debian_tools_list /tmp/debian_tools_list
 RUN apt-get update \
- && apt-get install -y --no-install-recommends curl ca-certificates git bash tini \
- && rm -rf /var/lib/apt/lists/*
+ && grep -vE '^\s*(#|$)' /tmp/debian_tools_list | xargs apt-get install -y --no-install-recommends \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -f /tmp/debian_tools_list
 
 # --- nvm + node 24 ---
 RUN mkdir -p ${NVM_DIR} \
