@@ -54,6 +54,13 @@ docker compose -f docker/compose.yaml up -d
 
 浏览器访问 `http://<你的局域网IP>`（与 `HTTPS_ACCESS_HOST` 一致），输入 `DSH_AUTH_USERNAME` / `DSH_AUTH_PASSWORD` 登录。
 
+## 开发约束
+
+- 版本号不带 `v` 前缀；发版 tag 格式 `release-<version>`。
+- 文档不得包含真实内网 IP、密码、域名，一律脱敏。
+- docker 相关配置收敛在 `docker/` 目录。
+- 构建期 `pnpm install` 需 `--config.dangerouslyAllowAllBuilds=true`（pnpm 11 默认阻止 postinstall）；设 `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` 跳过浏览器下载。
+
 ## 目录结构
 
 ```text
