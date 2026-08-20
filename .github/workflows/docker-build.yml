@@ -48,6 +48,7 @@ jobs:
             DSH_CLIENT_COMMIT_HASH=${{ github.sha }}
           tags: |
             ghcr.io/${{ github.repository }}:${{ steps.version.outputs.VERSION }}
+            ghcr.io/${{ github.repository }}:${{ github.ref_name }}
             ghcr.io/${{ github.repository }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
