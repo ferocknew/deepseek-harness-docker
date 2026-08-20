@@ -22,6 +22,7 @@ yamllint
 python3-yq
 ripgrep
 sqlite3
+locales
 less
 diff
 patch
