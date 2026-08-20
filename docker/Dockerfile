@@ -20,7 +20,8 @@ RUN apt-get update \
  && corepack enable \
  && corepack prepare pnpm@${PNPM_VERSION} --activate \
  && pnpm install --frozen-lockfile --config.dangerouslyAllowAllBuilds=true \
- && pnpm run build
+ && pnpm run build \
+ && ln -sf apps/cli/lib/bin.js node_modules/.bin/dsh
 
 # ============ runtime stage ============
 FROM debian:13-slim
