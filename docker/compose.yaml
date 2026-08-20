@@ -6,9 +6,9 @@ services:
     environment:
       - DSH_HOME=/data/dsh
       - DSH_TELEMETRY_DISABLED=1
-      - HTTPS_ACCESS_HOST=10.0.0.40
+      - HTTPS_ACCESS_HOST=10.0.0.10
       - DSH_AUTH_USERNAME=admin
-      - DSH_AUTH_PASSWORD=adminadmin123
+      - DSH_AUTH_PASSWORD=change-me
     volumes:
       # 相对 docker/ 目录：docker/data、docker/workspace
       - ./data:/data/dsh

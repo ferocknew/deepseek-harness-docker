@@ -24,7 +24,7 @@ DeepSeek Harness (`dsh`) 的 Docker 镜像工程。源码以 git submodule 形�
 |---|---|---|
 | `DSH_HOME` | `/data/dsh` | dsh 数据目录（会话、凭据等持久化数据） |
 | `DSH_TELEMETRY_DISABLED` | `1` | 关闭遥测上报 |
-| `HTTPS_ACCESS_HOST` | 无 | 对外访问的 host（如 `10.0.0.40`），传入 dsh 的 `--trusted-host` 使浏览器访问该 host 时 API 请求放行；支持逗号分隔多个 |
+| `HTTPS_ACCESS_HOST` | 无 | 对外访问的 host（如 `10.0.0.10`，替换为你自己的局域网 IP），传入 dsh 的 `--trusted-host` 使浏览器访问该 host 时 API 请求放行；支持逗号分隔多个 |
 | `DSH_AUTH_USERNAME` | 无 | Caddy basic auth 用户名（必填） |
 | `DSH_AUTH_PASSWORD` | 无 | Caddy basic auth 密码（必填） |
 | `DSH_WEB_PORT` | `3080` | dsh web 内部监听端口，一般无需修改 |
@@ -52,7 +52,7 @@ git push origin release-0.1.0-rc.8
 docker compose -f docker/compose.yaml up -d
 ```
 
-浏览器访问 `http://10.0.0.40`，输入 `DSH_AUTH_USERNAME` / `DSH_AUTH_PASSWORD` 登录。
+浏览器访问 `http://<你的局域网IP>`（与 `HTTPS_ACCESS_HOST` 一致），输入 `DSH_AUTH_USERNAME` / `DSH_AUTH_PASSWORD` 登录。
 
 ## 目录结构
 
