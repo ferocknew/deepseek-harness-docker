@@ -1,8 +1,14 @@
 {
 	admin off
+	storage file_system /data/dsh/caddy
 }
 
 :80 {
+	redir https://{host}:8443{uri} permanent
+}
+
+:8443 {
+	tls /data/dsh/caddy/cert.pem /data/dsh/caddy/key.pem
 	encode gzip
 	reverse_proxy 127.0.0.1:{env.DSH_WEB_PORT}
 	basic_auth {

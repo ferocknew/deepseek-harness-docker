@@ -24,6 +24,19 @@ mkdir -p "${DSH_HOME}" /workspace
 DSH_AUTH_HASH="$(caddy hash-password --plaintext "${DSH_AUTH_PASSWORD}")"
 export DSH_AUTH_HASH
 
+# ---- 生成自签 TLS 证书（持久化到 DSH_HOME，容器重建后证书不变）----
+mkdir -p "${DSH_HOME}/caddy"
+CERT_KEY="${DSH_HOME}/caddy/key.pem"
+CERT_PEM="${DSH_HOME}/caddy/cert.pem"
+ACCESS_HOST="$(echo "${HTTPS_ACCESS_HOST}" | cut -d, -f1 | xargs)"
+if [ ! -s "${CERT_PEM}" ] || [ ! -s "${CERT_KEY}" ]; then
+  echo "[entrypoint] generating self-signed TLS cert for ${ACCESS_HOST}"
+  openssl req -x509 -newkey rsa:2048 -nodes -days 3650 \
+    -keyout "${CERT_KEY}" -out "${CERT_PEM}" \
+    -subj "/CN=${ACCESS_HOST}" \
+    -addext "subjectAltName=IP:${ACCESS_HOST}" 2>/dev/null
+fi
+
 # ---- 启动 dsh web（仅允许监听 127.0.0.1，上游安全限制）----
 TRUSTED_ARGS=()
 IFS=',' read -r -a ACCESS_HOSTS <<< "${HTTPS_ACCESS_HOST}"

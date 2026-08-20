@@ -14,4 +14,4 @@ services:
       - ./data:/data/dsh
       - ./workspace:/workspace
     ports:
-      - "80:80"
+      - "8443:8443"
